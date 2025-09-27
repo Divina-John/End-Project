@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Resume Builder</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #8360c3, #2ebf91);
+      color: #333;
+    }
+    h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .form-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .resume-preview {
+      background: #fdfdfd;
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 600px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .resume-header {
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+    }
+    .resume-section h4 {
+      color: #2ebf91;
+      margin-top: 15px;
+    }
+    .btn-custom {
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-warning" href="#">Online Resume Builder</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row g-4">
+      
+      <!-- Left: Form -->
+      <div class="col-md-6">
+        <div class="form-section">
+          <h2 class="text-primary">Fill Your Details</h2>
+          <form id="resumeForm">
+            
+            <!-- Personal Info -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Full Name</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Contact Info</label>
+              <input type="text" class="form-control" id="contactInput" placeholder="Email / Phone">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Summary</label>
+              <textarea class="form-control" id="summaryInput" rows="3" placeholder="Brief summary about yourself"></textarea>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Education</label>
+              <textarea class="form-control" id="educationInput" rows="3" placeholder="E.g., B.Sc. Computer Science - ABC University (2018–2021)"></textarea>
+            </div>
+
+            <!-- Experience -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Experience</label>
+              <textarea class="form-control" id="experienceInput" rows="3" placeholder="E.g., Web Developer at XYZ Company (2021–Present)"></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Skills</label>
+              <input type="text" class="form-control" id="skillsInput" placeholder="E.g., HTML, CSS, JavaScript, Bootstrap">
+            </div>
+
+            <button type="button" class="btn btn-success btn-custom w-100 mt-3" onclick="window.print()">Download / Print Resume</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Live Preview -->
+      <div class="col-md-6">
+        <div class="resume-preview">
+          <div class="resume-header">
+            <h2 id="previewName">Your Name</h2>
+            <p id="previewContact">your.email@example.com | +91-9876543210</p>
+          </div>
+          <div class="resume-section">
+            <h4>Summary</h4>
+            <p id="previewSummary">A brief summary will appear here as you type...</p>
+          </div>
+          <div class="resume-section">
+            <h4>Education</h4>
+            <p id="previewEducation">Your education details will appear here...</p>
+          </div>
+          <div class="resume-section">
+            <h4>Experience</h4>
+            <p id="previewExperience">Your work experience will appear here...</p>
+          </div>
+          <div class="resume-section">
+            <h4>Skills</h4>
+            <p id="previewSkills">Your skills will appear here...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2025 Online Resume Builder | Built with Bootstrap & jQuery</p>
+  </footer>
+
+  <!-- jQuery + Bootstrap Bundle -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Live Preview Script -->
+  <script>
+    $(document).ready(function(){
+      $("#nameInput").on("input", function(){ $("#previewName").text($(this).val() || "Lilly"); });
+      $("#contactInput").on("input", function(){ $("#previewContact").text($(this).val() || "lilly.holland@gmail.com | +91-9876543210"); });
+      $("#summaryInput").on("input", function(){ $("#previewSummary").text($(this).val() || "A passionate and detail-oriented Web Developer with a Bachelor’s Degree in Computer Science and over 3 years of experience in creating responsive, user-friendly websites. Skilled in HTML, CSS, JavaScript, Bootstrap, and UI/UX design principles, with proven ability to deliver projects efficiently and collaboratively. Adept at problem-solving, adapting to new technologies, and ensuring high-quality web solutions for clients and organizations."); });
+      $("#educationInput").on("input", function(){ $("#previewEducation").text($(this).val() || "I completed my B.Sc. in Computer Science from Christ University (2018–2021) with a focus on software development, data structures, and web technologies. I also attended a Diploma in Web Design course where I gained hands-on skills in HTML, CSS, JavaScript, and Bootstrap."); });
+      $("#experienceInput").on("input", function(){ $("#previewExperience").text($(this).val() || "Worked as a Web Developer at Holland Company (2021–Present), where I designed and developed responsive websites, collaborated with designers to improve UI/UX, and optimized site performance for faster load times. Completed multiple freelance projects, including portfolio websites, landing pages, and e-commerce product pages."); });
+      $("#skillsInput").on("input", function(){ $("#previewSkills").text($(this).val() || "I am proficient in front-end development using HTML, CSS, JavaScript, and Bootstrap. I also have hands-on experience in creating responsive designs and working with UI/UX principles."); });
+    });
+  </script>
+
+</body>
+</html>
